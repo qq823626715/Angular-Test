@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 
+import { HEROES } from '../mock-heroes';
+
 @Component({
   selector: 'app-heroes',//组件选择器
   templateUrl: './heroes.component.html',//页面模板位置
@@ -8,10 +10,7 @@ import { Hero } from '../hero';
 })
 export class HeroesComponent implements OnInit {
 
-  hero: Hero = {
-    id : 1,
-    name : 'Windstorm'
-  };
+  heroes = HEROES;
 
   constructor() { }
 
