@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 
-import { HEROES } from '../mock-heroes';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-heroes',//组件选择器
@@ -10,17 +10,23 @@ import { HEROES } from '../mock-heroes';
 })
 export class HeroesComponent implements OnInit {
 
-  heroes = HEROES;
+  heroes: Hero[];
   selectedHero: Hero;
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
-  constructor() { }
+
+  getHeroes(): void{
+    this.heroes = this.heroService.getHeroes();
+  }
+
+  constructor(private heroService: HeroService) { }
 
   ngOnInit() {
     //创建完组件之后调用该方法
     //可用于初始化逻辑
+    this.getHeroes();
   }
 
 }
